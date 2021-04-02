@@ -1,3 +1,5 @@
+// Por: João Cervo
+
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
@@ -9,22 +11,8 @@ public class Main {
 
 
     public static void main(String[] args) {
-
-
-        // Tarefa teste1 = new Tarefa("Comprar Cafe", 10);
-        // Tarefa teste2 = new Tarefa("Pagar Aluguel", 2);
-
-        // PQtarefas.add(teste1);
-        // PQtarefas.add(teste2);
-
-        // Mostrar com mais prioridade
-        // while(true) {
-        //     Tarefa e = PQtarefas.poll();
-        //     if (e != null) System.out.println(e.getNome());
-
-        //     if(e == null) break;
-        // }
         System.out.println("=== Olá! Seja bem vindo! ===");
+
         while(programaRodando) {
             System.out.println("\nO que deseja fazer?");
             System.out.println("\n0 - Sair");

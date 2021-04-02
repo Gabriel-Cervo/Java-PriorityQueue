@@ -1,3 +1,5 @@
+// Por: João Cervo
+
 /** 
  * Implementação de uma PriorityQueue para Tarefas
  */
