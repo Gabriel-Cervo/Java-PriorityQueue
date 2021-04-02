@@ -1,3 +1,7 @@
+/** 
+ * Implementação de uma PriorityQueue para Tarefas
+ */
+
 public class Tarefa implements Comparable<Tarefa> {
     private String nome;
     private int prioridade;
@@ -24,11 +28,12 @@ public class Tarefa implements Comparable<Tarefa> {
     }
 
     /**
-    *  Prioridades menores = mais importantes
-    * Subtrai uma da outra pois funciona como o compareTo
-    * Caso resultado negativo = prioridade atual é mais importante
-    * Caso resultado positivo = outra tarefa é mais importante
-    * Caso igual, mesma prioridade
+     * Implementação do método compareTo da interface Comparable
+     * Prioridades menores = mais importantes
+     * Subtrai uma da outra pois funciona como o compareTo
+     * Caso resultado negativo = prioridade atual é mais importante
+     * Caso resultado positivo = outra tarefa é mais importante
+     * Caso igual, mesma prioridade
     */
     @Override
     public int compareTo(Tarefa outra) {
