@@ -1,5 +1,7 @@
 import java.io.*;
+import java.util.Arrays;
 import java.util.Queue;
+import java.util.stream.Collectors;
 
 public class LeitorCSV {
     public static void lerArquivoESalvarEmPQ(String nomeArquivo, Queue<Tarefa> lista) throws Exception {
@@ -12,5 +14,17 @@ public class LeitorCSV {
         }
         
         br.close();
+    }
+
+    public static void exportarLista(String nomeArquivo, Queue<Tarefa> lista) throws Exception {
+        FileWriter writer = new FileWriter(nomeArquivo);
+
+        for (Tarefa tarefa : lista) {
+            String[] emString = { tarefa.getNome(), "" + tarefa.getPrioridade() };
+            writer.write(Arrays.asList(emString).stream().collect(Collectors.joining(",")));
+            writer.write("\n");
+        }
+
+        writer.close();
     }
 }
