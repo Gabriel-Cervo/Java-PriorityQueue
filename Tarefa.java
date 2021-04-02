@@ -39,4 +39,9 @@ public class Tarefa implements Comparable<Tarefa> {
     public int compareTo(Tarefa outra) {
         return prioridade - outra.getPrioridade();
     }
+
+    @Override
+    public String toString() {
+        return nome + " | Prioridade: " + prioridade;
+    }
 }

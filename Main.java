@@ -26,7 +26,7 @@ public class Main {
         // }
         System.out.println("=== Olá! Seja bem vindo! ===");
         while(programaRodando) {
-            System.out.println("O que deseja fazer?");
+            System.out.println("\nO que deseja fazer?");
             System.out.println("\n0 - Sair");
             System.out.println("1 - Cadastrar uma nova tarefa");
             System.out.println("2 - Extrair e retornar a tarefa mais prioritária");
@@ -60,12 +60,16 @@ public class Main {
                 cadastrarNovaTarefa();
                 break;
             case 2: 
+                removerERetornarMaisPrioritaria();
                 break;
             case 3:
+                limparSequenciaDeTarefas();
                 break;
             case 4:
+                listarTarefasPendentes();
                 break;
             case 5:
+                importarCSV();
                 break;
             case 6:
                 break;
@@ -94,5 +98,40 @@ public class Main {
 
         PQtarefas.add(new Tarefa(nomeTarefa, prioridade));
         System.out.println("\nTarefa adicionada com sucesso!");
+    }
+
+    static void removerERetornarMaisPrioritaria() {
+        if (PQtarefas.isEmpty()) {
+            System.out.println("Você não possui tarefas para remover!");
+            return;
+        }
+        
+        Tarefa maisPrioritaria = PQtarefas.poll();
+
+        System.out.println("A tarefa: " + maisPrioritaria.getNome() + " era a mais prioritária e foi removida da lista com sucesso!");
+    }
+
+    static void limparSequenciaDeTarefas() {
+        PQtarefas = new PriorityQueue<Tarefa>(new ComparatorPrioridade());
+
+        System.out.println("Sua lista de tarefas foi limpa!");
+    }
+
+    static void listarTarefasPendentes() {
+        System.out.println("Sua lista de tarefas: ");
+        PQtarefas.forEach(tarefa -> System.out.println(tarefa));
+    }
+
+    static void importarCSV() {
+        System.out.print("Escreva o nome do arquivo (sem a extensão): ");
+        leitor.nextLine(); // Joga fora o \n nao consumido pelo leitor na escolha do menu
+        String nomeArquivo = leitor.nextLine();
+        try {
+            LeitorCSV.lerArquivoESalvarEmPQ(nomeArquivo, PQtarefas);
+            System.out.println("Lista importada com sucesso!");
+        } catch(Exception error) {
+            System.out.println("Um erro ocorreu ao ler o arquivo: ");
+            System.out.println(error.getMessage());
+        }
     }
 }
